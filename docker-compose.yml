@@ -1,0 +1,36 @@
+version: '3.2'
+
+services:
+  apprails:
+    image: dongjr/rails-chat-tutorial:1.0
+    build: .
+    ports:
+      - 9001:3000
+    restart: always
+    networks:
+      - my-net
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: postgres
+      REDIS_URL: redis://redis:6379
+    deploy: 
+      mode: replicated
+      replicas: 1
+
+  redis:
+    image: redis:3.2.8
+    environment:
+      REDIS_URL: redis://redis:6379
+    networks:
+      - my-net
+
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - 10034:5432
+    networks:
+      - my-net
+
+networks: 
+  my-net:
+    driver: overlay
