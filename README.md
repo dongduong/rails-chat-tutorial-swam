@@ -1,4 +1,4 @@
-###### Welcome to DOCEKR SWARM DEMO 
+#### Welcome to DOCKER SWARM DEMO 
 ## Author: Dong Duong <dhdong1510@gmail.com>
 
 ## Commands
